@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Speed Check</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Nikhila Mateti speed check</h1>
+    <div id="target">Your time: </div>
+    <div id="counter">Count: 0</div>
+    <button id="startTimer" >Start Timer</button>
+    <button id="react" >React</button>
+
+    <script>
+        function buttonPress1() {
+            setTimeout(function () {
+                document.getElementById('target').style.color = "red"
+            }, 3000)
+        }
+
+        function buttonPress2() {
+            setTimeout(() => {
+                document.getElementById('target').style.color = "red"
+            }, 3000)
+
+        }
+        var reactTime = undefined;
+        function recordTime() {
+            reactTime = Date.now();
+            console.log("Reaction time recorded: "+reactTime);
+        }
+
+        document.getElementById("react").onclick = recordTime;
+
+        function startTime() {
+
+            for (let i = 0; i < 9; i++) {
+                setTimeout(function () {
+                    document.getElementById("counter").innerHTML = "Count: " + i;
+                }, (8 - i) * 1000);
+            }
+            setTimeout(function() {
+                if (reactTime === undefined) {
+                    document.getElementById("target").innerHTML = "Time was : Too Slow";
+                } else {
+                    const endTime = Date.now();
+                    const elapsedTime = endTime - reactTime;
+                    document.getElementById("target").innerHTML = "Time was :" + elapsedTime + "ms";
+                }
+            }, 8000);
+        }
+
+        document.getElementById("startTimer").onclick = startTime;
+        
+    </script>
+
+</body>
+
+</html>
