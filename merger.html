@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Merger</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color:pink ;
+        }
+
+        .flex-container>div {
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Nikhila Mateti Builds a merger</h1>
+    <div class="flex-container" id="target">
+        <div class="merger">row item 1</div>
+        <div class="merger">row item 2</div>
+        <div class="merger">row item 3</div>
+    </div><br>
+    <input type="text" id="inputText" placeholder="Enter text">
+    <button onclick="addEnd()">Add end</button>
+    <button onclick="addFront()">Add front</button>
+    <button onclick="remove()">Remove</button>
+    <button onclick="makeNewDiv()">Add one</button>
+
+
+</body>
+<script>
+    function makeNewDiv(){
+		let element = document.createElement("div")
+		element.innerHTML = "an item after 3"
+		element.style.color = "orange"
+		let container = document.getElementById('target')
+		container.appendChild(element)
+		
+	}
+    function addEnd() {
+        inputText = document.getElementById("inputText").value;
+        element = document.createElement("div");
+        element.innerHTML = inputText;
+        element.className = "merger";
+        container = document.getElementById('target');
+        container.appendChild(element);
+    }
+    function addFront() {
+        inputText = document.getElementById("inputText").value;
+        element = document.createElement("div");
+        element.innerHTML = inputText;
+        element.className = "merger";
+        container = document.getElementById('target');
+        firstChild = container.firstChild;
+        container.insertBefore(element, firstChild);
+    }
+
+    function remove() {
+        mergerItems = document.getElementsByClassName("merger");
+        length = mergerItems.length;
+        if (length > 0) {
+            middleIndex = Math.floor(length / 2);
+            mergerItems[middleIndex].remove();
+        }
+    }
+    
+
+</script>
+
+</html>
