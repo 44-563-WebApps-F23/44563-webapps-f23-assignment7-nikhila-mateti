@@ -16,7 +16,7 @@
     <div id="counter">Count: 0</div>
     <button id="startTimer" >Start Timer</button>
     <button id="react" >React</button>
-    
+
     <script>
         function buttonPress1() {
             setTimeout(function () {
@@ -39,11 +39,11 @@
         document.getElementById("react").onclick = recordTime;
 
         function startTime() {
-
-            for (let i = 0; i < 9; i++) {
+            const countdownDuration = Math.floor(Math.random() * 9) + 2;
+            for (let i = 0; i < countdownDuration; i++) {
                 setTimeout(function () {
                     document.getElementById("counter").innerHTML = "Count: " + i;
-                }, (8 - i) * 1000);
+                }, (countdownDuration - i) * 1000);
             }
             setTimeout(function() {
                 if (reactTime === undefined) {
